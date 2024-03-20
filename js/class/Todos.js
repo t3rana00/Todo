@@ -39,8 +39,6 @@ class Todos {
         })
     }
 
-
-
     #readJson = (tasksAsJson) => {
         tasksAsJson.forEach(node => {
             const task = new Task(node.id, node.description)
