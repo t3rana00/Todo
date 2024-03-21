@@ -16,7 +16,7 @@ const renderTask = (task) => {
     li.setAttribute('date-key', task.getId().toString())
     li.innerHTML = task.getText();
     renderLink(li, task.getId());
-    renderSpan(li, task.getText());
+    //renderSpan(li, task.getText());
     list.append(li)
   }
 
@@ -49,6 +49,7 @@ const getTasks = () => {
             tasks.forEach(task => {
             renderTask(task)
         })
+        input.disabled = false
     }).catch((error) => {
         alert(error)
     })
