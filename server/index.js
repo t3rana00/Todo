@@ -1,13 +1,13 @@
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const {query } = require('./helpers/db.js');
+const { query } = require('./helpers/db.js');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
+
 const port = process.env.PORT;
 
 app.get('/',async (req,res) => {
@@ -25,8 +25,6 @@ app.get('/',async (req,res) => {
 
 app.listen(port);
 
-
-   
 app.post('/new',async (req,res) => {
     try{
         const result = await query('insert into task (description) values ($1) returning *', 
@@ -38,7 +36,7 @@ app.post('/new',async (req,res) => {
         res.status(500).json({error: error});
     }
 });
- 
+
 app.delete('/delete/:id',async(req,res) => {
     const id = Number(req.params.id);
     try {
